@@ -26,6 +26,7 @@ expected_files = set()
 for sample_id in samplesheet.index:
     expected_files.add(RESULTS / "annotation" / sample_id / f"{sample_id}.gff3")
     expected_files.add(RESULTS / f"typing/AMR/{sample_id}/summary_matches.txt")
+    expected_files.add(RESULTS / f"typing/mlst/{sample_id}/mlst.tsv")
 
 
 rule all:

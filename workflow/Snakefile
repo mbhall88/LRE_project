@@ -1,0 +1,37 @@
+import pandas as pd
+import os
+from pathlib import Path
+
+WORKFLOW = Path("workflow").resolve()
+CONFIG = Path("config").resolve()
+RULES = WORKFLOW / "rules"
+ENVS = WORKFLOW / "envs"
+SCRIPTS = WORKFLOW / "scripts"
+RESULTS = Path("results").resolve()
+FIGURES = RESULTS / "figures"
+TABLES = RESULTS / "tables"
+LOGS = Path("logs/rules").resolve()
+ASM_DIR = Path("data/assembly").resolve()
+BAKTA_DB = os.environ["BAKTA_DB"]
+
+
+# configfile: CONFIG / "config.yaml"
+
+
+samplesheet = pd.read_csv(
+    CONFIG / "samplesheet.csv", index_col="sample_id", comment="#"
+)
+
+expected_files = set()
+for sample_id in samplesheet.index:
+    expected_files.add(RESULTS / "annotation" / sample_id / f"{sample_id}.gff3")
+    expected_files.add(RESULTS / f"typing/AMR/{sample_id}/summary_matches.txt")
+
+
+rule all:
+    input:
+        expected_files,
+
+
+include: RULES / "annotation.smk"
+include: RULES / "typing.smk"

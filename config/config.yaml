@@ -1,0 +1,7 @@
+references:
+  Enterococcus_faecalis: 
+    accession: "GCF_029024925.1"
+    url: "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/029/024/925/GCF_029024925.1_ASM2902492v1/GCF_029024925.1_ASM2902492v1_genomic.fna.gz"
+  Enterococcus_faecium: 
+    accession: "GCF_009734005.1"
+    url: "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/734/005/GCF_009734005.1_ASM973400v2/GCF_009734005.1_ASM973400v2_genomic.fna.gz"

@@ -27,6 +27,9 @@ for sample_id in samplesheet.index:
     expected_files.add(RESULTS / "annotation" / sample_id / f"{sample_id}.gff3")
     expected_files.add(RESULTS / f"typing/AMR/{sample_id}/summary_matches.txt")
     expected_files.add(RESULTS / f"typing/mlst/{sample_id}/mlst.tsv")
+    expected_files.add(RESULTS / f"QC/CheckM2/{sample_id}_checkm2.tsv")
+    expected_files.add(RESULTS / f"typing/mob_suite/{sample_id}/mobtyper_results.txt")
+    expected_files.add(RESULTS / f"typing/abricate/{sample_id}.abricate.tsv")
 
 
 rule all:
@@ -36,3 +39,4 @@ rule all:
 
 include: RULES / "annotation.smk"
 include: RULES / "typing.smk"
+include: RULES / "qc.smk"
